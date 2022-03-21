@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin">
+
+
+	<update id="lottoDataUpdate" parameterType="java.util.List">
+		INSERT INTO lotto_data
+		(
+		 	drwNo, drwtNo1, drwtNo2, drwtNo3, drwtNo4, drwtNo5, drwtNo6, bnusNo, placeNo1_cnt, placeNo2_cnt, placeNo3_cnt, placeNo4_cnt, placeNo5_cnt,
+			dwr_dt, placeNo1_price, placeNo2_price, placeNo3_price, placeNo4_price, placeNo5_price
+		 )
+		VALUES
+		<foreach collection="list" item="items" separator="),(" open="(" close=")">
+			${items.drwNo}, ${items.drwtNo1}, ${items.drwtNo2}, ${items.drwtNo3}, ${items.drwtNo4}, ${items.drwtNo5}, ${items.drwtNo6}, ${items.bnusNo}, ${items.placeNo1_cnt}, ${items.placeNo2_cnt}, ${items.placeNo3_cnt}, ${items.placeNo4_cnt}, ${items.placeNo5_cnt},
+			'${items.dwr_dt}', '${items.placeNo1_price}', '${items.placeNo2_price}', '${items.placeNo3_price}', '${items.placeNo4_price}', '${items.placeNo5_price}'
+		</foreach>
+		ON DUPLICATE KEY UPDATE	drwNo=values(drwNo)
+
+	</update>
+
+</mapper>
