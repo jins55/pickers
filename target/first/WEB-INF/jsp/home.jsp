@@ -7,111 +7,114 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0 minimal-ui"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<!-- Responsive navbar-->
+<%@include file="./include/header.jsp"%>
 
-<title>로또몬</title>
-<meta name="description" content="로또 1등의 꿈 현실로 만들어드립니다.">
+<!-- Page content-->
+<div class="container main-container">
 
-<link rel="apple-touch-icon" sizes="57x57" href="/img/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="/img/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="/img/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/img/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="/img/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/img/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/img/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/img/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="/img/favicon-96x96.png">
+    <div class="row">
+        <!-- Side widgets-->
+        <div class="col-lg-2">
+            <%@include file="./include/leftNav.jsp"%>
+        </div>
 
-
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<%--<link rel="stylesheet" href="/css/swiper-min.css" />
-<script src="/js/swiper.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="/css/layout.css" />
-  <link rel="stylesheet" type="text/css" href="/css/font.css" />
-  <link rel="stylesheet" type="text/css" href="/css/common.css" />
-<link rel="stylesheet" type="text/css" href="/css/header.css" />
-<link rel="stylesheet" type="text/css" href="/css/footer.css" />
-<link rel="stylesheet" type="text/css" href="/css/style.css" />--%>
-
-
-  <%--리뉴얼--%>
-  <!--웹폰트추가-->
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;display=swap" rel="stylesheet">
-
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
-
-  <!-- Web Fonts  -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light%7CPlayfair+Display:400" rel="stylesheet" type="text/css">
-
-  <!-- Vendor CSS -->
-  <link rel="stylesheet" href="/renew/vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/renew/vendor/fontawesome-free/css/all.min.css">
-  <link rel="stylesheet" href="/renew/vendor/animate/animate.min.css">
-  <link rel="stylesheet" href="/renew/vendor/simple-line-icons/css/simple-line-icons.min.css">
-  <link rel="stylesheet" href="/renew/vendor/owl.carousel/assets/owl.carousel.min.css">
-  <link rel="stylesheet" href="/renew/vendor/owl.carousel/assets/owl.theme.default.min.css">
-  <link rel="stylesheet" href="/renew/vendor/magnific-popup/magnific-popup.min.css">
-
-  <!-- Theme CSS -->
-  <link rel="stylesheet" href="/renew/css/theme.css?1">
-  <link rel="stylesheet" href="/renew/css/theme-elements.css">
-  <link rel="stylesheet" href="/renew/css/theme-blog.css">
-  <link rel="stylesheet" href="/renew/css/theme-shop.css">
-
-  <!-- Current Page CSS -->
-  <link rel="stylesheet" href="/renew/vendor/rs-plugin/css/settings.css">
-  <link rel="stylesheet" href="/renew/vendor/rs-plugin/css/layers.css">
-  <link rel="stylesheet" href="/renew/vendor/rs-plugin/css/navigation.css">
-
-  <!-- Demo CSS -->
-
-  <!-- Skin CSS -->
-  <link rel="stylesheet" href="/renew/css/skins/skin-corporate-9.css">
-
-  <!-- Theme Custom CSS -->
-  <link rel="stylesheet" href="/renew/css/custom.css">
-
-  <!-- Head Libs -->
-  <script src="/renew/vendor/modernizr/modernizr.min.js"></script>
-  <script src="https://kit.fontawesome.com/4b29b1942b.js" crossorigin="anonymous"></script>
-
-  <!--css추가-->
-  <link rel="stylesheet" href="/renew/css/new_style1.css">
-<style type="text/css">
-.placeholder { color: #aaa; }
-
-/*자동로그인 임시 제거*/
-#checkbox {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip:rect(0,0,0,0);
-  border: 0;
-  color: #fff;
-}
-
-.main-2table .placeTable tr:nth-child(odd){background-color: #f5f6f7}
-.main-2table .placeTable tr:nth-child(2) td:nth-child(1){color: #ee1916 !important;}
-</style>
+        <!-- Blog entries-->
+        <div class="col-lg-7">
+            <!-- Nested row for non-featured blog posts-->
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                        <div class="card-header" style="line-height: 40px;">개발자 포럼 <a class="btn btn-primary cus-more-btn" href="/board/list.do?type=00">더보기 →</a></div>
+                        <c:forEach items="${devBoards }" var="item" varStatus="status">
+                            <div class="card-body card-list pointer_cursor list_item" style="display: flex;" data-seq="${item.seq}">
+                                <div class="card-title">
+                                    <div class="card-list-header" style="font-size: 14px; text-overflow: ellipsis;overflow: hidden;white-space: nowrap">${item.title} <c:if test="${item.total_comment > 0}">[${item.total_comment}] </c:if> </div>
+                                    <div class="card-list-date">
+                                        <fmt:parseDate value="${item.reg_dt}" var="dateString" pattern="yyyy-MM-dd" />
+                                        <fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd" /> | 조회수 ${item.pv}
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
 
 
-</head>
-<body class="" data-plugin-page-transition="" data-loading-overlay="" data-plugin-options="{'hideDelay': 500}">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                        <div class="card-header" style="line-height: 40px;">인기/유머 <a class="btn btn-primary cus-more-btn" href="/board/list.do?type=01">더보기 →</a></div>
+                        <c:forEach items="${funBoards }" var="item" varStatus="status">
+                            <div class="card-body card-list pointer_cursor list_item" style="display: flex;" data-seq="${item.seq}">
+                                <c:if test="${item.thumbnail == '' || item.thumbnail == null}">
+                                </c:if>
+                                <c:if test="${item.thumbnail != ''}">
+                                    <div class="board-main-img">
+                                        <img src="${item.thumbnail}">
+                                    </div>
+                                </c:if>
+                                <div class="card-title">
+                                    <div class="card-list-header" style="font-size: 14px; text-overflow: ellipsis;overflow: hidden;white-space: nowrap">${item.title} <c:if test="${item.total_comment > 0}">[${item.total_comment}] </c:if> </div>
+                                    <div class="card-list-date">
+                                        <fmt:parseDate value="${item.reg_dt}" var="dateString" pattern="yyyy-MM-dd" />
+                                        <fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd" /> | 조회수 ${item.pv}
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                        <div class="card-header" style="line-height: 40px;">연예인 모음 <a class="btn btn-primary cus-more-btn" href="/board/list.do?type=03">더보기 →</a></div>
+                        <c:forEach items="${backBoards }" var="item" varStatus="status">
+                            <div class="card-body card-list pointer_cursor list_item" style="display: flex;" data-seq="${item.seq}">
+                                <c:if test="${item.thumbnail == '' || item.thumbnail == null}">
+                                </c:if>
+                                <c:if test="${item.thumbnail != ''}">
+                                    <div class="board-main-img">
+                                        <img src="${item.thumbnail}">
+                                    </div>
+                                </c:if>
+                                <div class="card-title">
+                                    <div class="card-list-header" style="font-size: 14px; text-overflow: ellipsis;overflow: hidden;white-space: nowrap">${item.title} <c:if test="${item.total_comment > 0}">[${item.total_comment}] </c:if> </div>
+                                    <div class="card-list-date">
+                                        <fmt:parseDate value="${item.reg_dt}" var="dateString" pattern="yyyy-MM-dd" />
+                                        <fmt:formatDate value="${dateString}" pattern="yyyy-MM-dd" /> | 조회수 ${item.pv}
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+            </div>
+        </div>
 
+        <!-- Side widgets-->
+        <div class="col-lg-3">
+            <%@include file="./include/rightNav.jsp"%>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pickers 2022</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script>
+    $(".list_item").click(function(){
+        var seq = $(this).data('seq');
+        location.href = '/board/detail.do?seq=' + seq;
+    })
 
-<div> test </div>
+</script>
+
 
 </body>

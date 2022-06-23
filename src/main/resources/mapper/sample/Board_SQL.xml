@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+
+	<update id="insertCrawlingBoard" parameterType="java.util.List">
+		INSERT INTO board
+		(
+		 	type, title, content, user_id,origin_url, reg_dt, thumbnail, pv
+		 )
+		VALUES
+		<foreach collection="list" item="items" separator="),(" open="(" close=")">
+			'${items.type}', #{items.title}, #{items.content}, 'admin', '${items.origin_url}', now(), #{items.thumbnail}, #{items.pv}
+		</foreach>
+	</update>
+
+	<select id="latestBoard" parameterType="String" resultType="com.company.pickers.model.Board">
+		SELECT * FROM board WHERE type = #{type} ORDER BY seq DESC LIMIT 1;
+	</select>
+
+	<select id="alreadyCheck" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM board WHERE origin_url = #{url};
+	</select>
+
+	<select id="getBoardList" parameterType="com.company.pickers.model.Board" resultType="com.company.pickers.model.Board">
+		SELECT
+		       *, (SELECT count(*) FROM board WHERE type = #{type}) as totalCnt
+		FROM board WHERE type = #{type} ORDER BY seq DESC LIMIT ${limStr},${limEnd};
+	</select>
+
+	<select id="getBoardList3" parameterType="Integer" resultType="com.company.pickers.model.Board">
+		<![CDATA[
+		select * from board
+		where ( seq = IFNULL((select min(seq) from board where seq > #{seq}),0)
+		or  seq = IFNULL((select max(seq) from board where seq < #{seq}),0)
+		or seq = #{seq}
+		)
+		]]>
+	</select>
+
+	<delete id="dupBoardDel">
+		DELETE a FROM board a, board b WHERE a.seq > b.seq AND a.title = b.title;
+	</delete>
+
+	<update id="addPv" parameterType="Integer">
+		UPDATE board SET pv = IFNULL(pv, 0)+1 WHERE seq= #{seq}
+	</update>
+
+	<update id="cmUp" parameterType="com.company.pickers.model.Comment">
+		update board set total_comment = total_comment + 1 where seq = #{board_seq}
+	</update>
+
+	<update id="cmDown" parameterType="com.company.pickers.model.Comment">
+		update board set total_comment = total_comment - 1 where seq = #{board_seq}
+	</update>
+
+	<select id="getCommentList" parameterType="Integer" resultType="com.company.pickers.model.Comment">
+		SELECT * FROM comment WHERE board_seq = #{seq} ORDER BY reg_dt DESC
+	</select>
+
+
+	<update id="insertComment" parameterType="com.company.pickers.model.Comment">
+		INSERT INTO comment
+		( board_seq, name, password, comment,reg_dt, ip )
+		VALUES
+		( '${board_seq}', #{name}, #{password},  #{comment},  NOW(), #{ip} )
+	</update>
+
+</mapper>
